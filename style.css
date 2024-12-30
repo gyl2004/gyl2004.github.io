@@ -44,15 +44,16 @@ body {
 /* 主抽取区域 */
 .lucky-draw {
     background: rgba(255, 255, 255, 0.15);
-    padding: 2rem;
-    border-radius: 20px;
+    padding: 3rem 4rem;
+    border-radius: 25px;
     text-align: center;
     backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
+    box-shadow: 0 0 30px rgba(255, 77, 77, 0.3);
     position: relative;
     z-index: 2;
     transition: all 0.3s ease;
     animation: centerFloat 3s ease-in-out infinite;
+    min-width: 500px;
 }
 
 .lucky-draw:hover {
@@ -61,14 +62,15 @@ body {
 }
 
 .name-display {
-    font-size: 3rem;
+    font-size: 4.5rem;
     color: var(--gold);
     margin: 2rem 0;
-    min-height: 100px;
+    min-height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
 }
 
 .start-button {
@@ -401,4 +403,39 @@ body {
         opacity: 0;
         transform: scale(1.5);
     }
+}
+
+/* 修改抽取区域的标题和名字显示 */
+.lucky-draw h1 {
+    font-size: 3rem;  /* 增大标题字体 */
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.name-display {
+    font-size: 4.5rem;  /* 从3rem增大到4.5rem */
+    color: var(--gold);
+    margin: 2rem 0;
+    min-height: 120px;  /* 增加高度以适应更大的字体 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+/* 调整抽取区域大小 */
+.lucky-draw {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 3rem 4rem;  /* 增加内边距 */
+    border-radius: 25px;  /* 增大圆角 */
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(255, 77, 77, 0.3);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    animation: centerFloat 3s ease-in-out infinite;
+    min-width: 500px;  /* 设置最小宽度 */
 } 
