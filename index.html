@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>新年快乐 - 幸运抽取</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap">
+</head>
+<body>
+    <!-- 添加雪花容器 -->
+    <div id="snowflakes-container"></div>
+    
+    <div class="container">
+        <!-- 添加对联 -->
+        <div class="couplet">
+            <div class="couplet-left">学业进步永向前</div>
+            <div class="couplet-right">前程似锦永不忘</div>
+            <div class="couplet-horizontal">元旦快乐</div>
+        </div>
+        
+        <!-- 红包装饰 -->
+        <div class="decorations">
+            <div class="lantern left"></div>
+            <div class="lantern right"></div>
+            <div class="firecracker"></div>
+        </div>
+
+        <!-- 主要抽取区域 -->
+        <div class="lucky-draw">
+            <h1>✨ 幸运抽取 ✨</h1>
+            <div class="name-display">
+                <span id="selected-name">点击开始</span>
+            </div>
+            <button id="start-btn" class="start-button">开始抽取</button>
+        </div>
+
+        <!-- 视频播放器 -->
+        <div class="video-container">
+            <button id="video-btn" class="video-button">
+                <span class="iconfont">▶</span>
+            </button>
+            <div class="video-overlay"></div>
+            <div class="video-player">
+                <button class="close-video">×</button>
+                <video id="bg-video" controls>
+                    <source src="video.mp4" type="video/mp4">
+                    您的浏览器不支持视频播放
+                </video>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <!-- 在body末尾添加音效元素 -->
+    <audio id="drumroll" src="drumroll.mp3" preload="auto"></audio>
+    <audio id="success" src="success.mp3" preload="auto"></audio>
+</body>
+</html> 

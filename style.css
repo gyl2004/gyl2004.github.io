@@ -1,0 +1,399 @@
+:root {
+    --primary-red: #ff4d4d;
+    --gold: #ffd700;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #4a0000 50%, #1a1a1a 100%);
+    font-family: 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* 装饰元素 */
+.lantern {
+    width: 60px;
+    height: 80px;
+    background: var(--primary-red);
+    border-radius: 30px;
+    position: absolute;
+    animation: swing 3s infinite ease-in-out;
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.5);
+}
+
+.lantern.left {
+    left: 50px;
+    top: 50px;
+}
+
+.lantern.right {
+    right: 50px;
+    top: 50px;
+}
+
+/* 主抽取区域 */
+.lucky-draw {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    animation: centerFloat 3s ease-in-out infinite;
+}
+
+.lucky-draw:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(255, 77, 77, 0.5);
+}
+
+.name-display {
+    font-size: 3rem;
+    color: var(--gold);
+    margin: 2rem 0;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.start-button {
+    background: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.start-button:hover {
+    transform: scale(1.1);
+}
+
+/* 视频播放器 */
+.video-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.video-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-red);
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.video-button:hover {
+    transform: scale(1.1);
+}
+
+.video-player {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vh;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 1001;
+    display: none;
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: none;
+}
+
+.close-video {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1002;
+    transition: all 0.3s ease;
+}
+
+.close-video:hover {
+    background: rgba(255,0,0,0.7);
+    transform: scale(1.1);
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 动画效果 */
+@keyframes swing {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* 添加对联样式 */
+.couplet {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.couplet-left, .couplet-right {
+    position: absolute;
+    writing-mode: vertical-lr;
+    padding: 20px;
+    background: rgba(255, 0, 0, 0.9);
+    color: #FFD700;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: glowing 2s ease-in-out infinite;
+}
+
+.couplet-left {
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.couplet-right {
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.couplet-horizontal {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 40px;
+    background: rgba(255, 0, 0, 0.9);
+    color: #FFD700;
+    font-size: 2.5rem;
+    font-weight: bold;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    animation: 
+        glowing 2s ease-in-out infinite,
+        topFloat 3s ease-in-out infinite;
+    z-index: 3;
+    white-space: nowrap;
+    letter-spacing: 5px;
+}
+
+@keyframes glowing {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 50px rgba(255, 0, 0, 0.8);
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+}
+
+/* 优化雪花样式 */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    text-shadow: 0 0 5px rgba(255,255,255,0.6);
+    cursor: default;
+    user-select: none;
+    z-index: 1;
+    will-change: transform;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-10px) rotate(0deg);
+    }
+    to {
+        transform: translateY(105vh) rotate(360deg);
+    }
+}
+
+/* 增强对联动效 */
+.couplet-left, .couplet-right {
+    animation: 
+        glowing 2s ease-in-out infinite,
+        bounce 3s ease-in-out infinite;
+}
+
+.couplet-horizontal {
+    animation: 
+        glowing 2s ease-in-out infinite,
+        float 3s ease-in-out infinite;
+}
+
+/* 添加新的动画关键帧 */
+@keyframes float {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1);
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    }
+    50% { 
+        transform: translate(-50%, -60%) scale(1.1);
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.05); }
+}
+
+@keyframes shine {
+    0%, 100% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+    50% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+}
+
+/* 修改灯笼动画 */
+.lantern {
+    animation: 
+        swing 3s infinite ease-in-out,
+        glow 2s infinite ease-in-out;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 77, 77, 0.5); }
+    50% { box-shadow: 0 0 30px rgba(255, 77, 77, 0.8); }
+}
+
+/* 添加新的顶部浮动动画 */
+@keyframes topFloat {
+    0%, 100% { 
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+    50% { 
+        transform: translateX(-50%) translateY(10px) scale(1.05);
+    }
+}
+
+/* 修改抽取区域的浮动动画 */
+@keyframes centerFloat {
+    0%, 100% { 
+        transform: translateY(0) scale(1);
+    }
+    50% { 
+        transform: translateY(-10px) scale(1.02);
+    }
+}
+
+/* 修改对联和横批的共同样式 */
+.couplet-left, .couplet-right, .couplet-horizontal {
+    font-family: 'Ma Shan Zheng', cursive, 'Microsoft YaHei', sans-serif;
+    /* 增加字体大小使行楷更清晰 */
+    font-weight: normal; /* 行楷不需要加粗 */
+}
+
+/* 调整横批样式 */
+.couplet-horizontal {
+    font-size: 3rem; /* 增大横批字号 */
+    padding: 15px 50px; /* 增加横向内边距 */
+}
+
+/* 调整对联样式 */
+.couplet-left, .couplet-right {
+    font-size: 2.5rem; /* 增大对联字号 */
+    padding: 30px 25px; /* 调整内边距 */
+    line-height: 1.5; /* 调整行高 */
+}
+
+/* 选中效果动画 */
+.selected {
+    animation: selectedEffect 0.5s ease-out;
+}
+
+/* 添加闪光效果 */
+.selected::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(255,215,0,0.8) 0%, rgba(255,215,0,0) 70%);
+    animation: glowPulse 1s ease-out;
+    z-index: -1;
+}
+
+@keyframes selectedEffect {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.2);
+        text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    }
+}
+
+@keyframes glowPulse {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+} 
